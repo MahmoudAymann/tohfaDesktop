@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{CD14B90A-3440-4F40-A928-97E462EEDA45}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>Tohfa</RootNamespace>
+    <AssemblyName>Tohfa</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\Karim\Documents\MAymanM\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>13</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>87C81C952F83E9E7335AFAF59A2A7E22CBD4D849</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>Tohfa_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup />
+  <PropertyGroup>
+    <ApplicationIcon>tohfa_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CrystalDecisions.CrystalReports.Engine, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="CrystalDecisions.ReportSource, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Shared, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="CrystalDecisions.Windows.Forms, Version=13.0.3500.0, Culture=neutral, PublicKeyToken=692fbea5521e1304, processorArchitecture=MSIL" />
+    <Reference Include="FlashControlV71, Version=1.0.3187.32366, Culture=neutral, PublicKeyToken=692fbea5521e1304" />
+    <Reference Include="System" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.Ribbon35">
+      <HintPath>..\..\..\..\..\Desktop\others\OfficeLib\System.Windows.Forms.Ribbon35.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AgentCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AgentCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AgentReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AgentReportForm.Designer.cs">
+      <DependentUpon>AgentReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Agents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Agents.Designer.cs">
+      <DependentUpon>Agents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="DepartmentCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DepartmentCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="DepartmentReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="DepartmentReportForm.Designer.cs">
+      <DependentUpon>DepartmentReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>EmployeeCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CurrencyConfig.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CurrencyConfig.Designer.cs">
+      <DependentUpon>CurrencyConfig.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Department.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Department.Designer.cs">
+      <DependentUpon>Department.cs</DependentUpon>
+    </Compile>
+    <Compile Include="EmployeeReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EmployeeReportForm.Designer.cs">
+      <DependentUpon>EmployeeReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Employees.Designer.cs">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderForServiceCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderForServiceCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderForServiceReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderForServiceReportForm.Designer.cs">
+      <DependentUpon>OrderForServiceReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RawMaterialCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>RawMaterialCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="RawMaterialReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterialReportForm.Designer.cs">
+      <DependentUpon>RawMaterialReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MainForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MainForm.Designer.cs">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderForProductCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>OrderForProductCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="OrderForProductReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderForProductReportForm.Designer.cs">
+      <DependentUpon>OrderForProductReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderForService.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderForService.Designer.cs">
+      <DependentUpon>OrderForService.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderForProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderForProduct.Designer.cs">
+      <DependentUpon>OrderForProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="OrderSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="OrderSelection.Designer.cs">
+      <DependentUpon>OrderSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProductCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProductCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ProductReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProductReportForm.Designer.cs">
+      <DependentUpon>ProductReportForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Products.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Products.Designer.cs">
+      <DependentUpon>Products.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="RawMaterials.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RawMaterials.Designer.cs">
+      <DependentUpon>RawMaterials.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ReportSelection.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ReportSelection.Designer.cs">
+      <DependentUpon>ReportSelection.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Suppliers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Suppliers.Designer.cs">
+      <DependentUpon>Suppliers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SuppliersCrystalReport.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SuppliersCrystalReport.rpt</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="SuppliersReportForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuppliersReportForm.Designer.cs">
+      <DependentUpon>SuppliersReportForm.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AgentCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>AgentCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AgentReportForm.resx">
+      <DependentUpon>AgentReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Agents.resx">
+      <DependentUpon>Agents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>DepartmentCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="DepartmentReportForm.resx">
+      <DependentUpon>DepartmentReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>EmployeeCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CurrencyConfig.resx">
+      <DependentUpon>CurrencyConfig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Department.resx">
+      <DependentUpon>Department.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EmployeeReportForm.resx">
+      <DependentUpon>EmployeeReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Employees.resx">
+      <DependentUpon>Employees.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForProduct.resx">
+      <DependentUpon>OrderForProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForProductCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OrderForProductCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForProductReportForm.resx">
+      <DependentUpon>OrderForProductReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForService.resx">
+      <DependentUpon>OrderForService.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForServiceCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>OrderForServiceCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderForServiceReportForm.resx">
+      <DependentUpon>OrderForServiceReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="OrderSelection.resx">
+      <DependentUpon>OrderSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>ProductCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProductReportForm.resx">
+      <DependentUpon>ProductReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Products.resx">
+      <DependentUpon>Products.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterialCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>RawMaterialCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterialReportForm.resx">
+      <DependentUpon>RawMaterialReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RawMaterials.resx">
+      <DependentUpon>RawMaterials.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ReportSelection.resx">
+      <DependentUpon>ReportSelection.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Suppliers.resx">
+      <DependentUpon>Suppliers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuppliersCrystalReport.rpt">
+      <Generator>CrystalDecisions.VSDesigner.CodeGen.ReportCodeGenerator</Generator>
+      <LastGenOutput>SuppliersCrystalReport.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuppliersReportForm.resx">
+      <DependentUpon>SuppliersReportForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="Tohfa_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_bank.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_currency_dollar.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_delete.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_edit.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_plus_add.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_print.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_save.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_search.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Stock_Index_Down.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_Stock_Index_Up.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\if_view_refreshs.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\slider_back.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-department-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-group-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-supply-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-employee-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-recyclying-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-product-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-order-40.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-upload-26.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-order_fromEmp-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-service-100.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.6.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.6.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ic-statistics-48.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\default_img.bmp" />
+    <None Include="Resources\ic_drop_down-32dp.png" />
+    <None Include="Resources\ic_drop_down-24dp.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{C0C07587-41A7-46C8-8FBD-3F9C8EBE2DDC}" />
+  </ItemGroup>
+  <ItemGroup>
+    <PublishFile Include="log4net">
+      <Visible>False</Visible>
+      <Group>
+      </Group>
+      <TargetPath>
+      </TargetPath>
+      <PublishState>Include</PublishState>
+      <IncludeHash>True</IncludeHash>
+      <FileType>Assembly</FileType>
+    </PublishFile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\dollar-coin-stack.png" />
+    <None Include="Resources\mainpage.jpg" />
+    <Content Include="tohfa_icon.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>
