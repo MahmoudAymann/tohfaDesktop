@@ -83,6 +83,26 @@ namespace Tohfa.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap ic_accept_32 {
+            get {
+                object obj = ResourceManager.GetObject("ic_accept_32", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ic_combo_chart_64 {
+            get {
+                object obj = ResourceManager.GetObject("ic_combo_chart_64", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap ic_department_48 {
             get {
                 object obj = ResourceManager.GetObject("ic_department_48", resourceCulture);

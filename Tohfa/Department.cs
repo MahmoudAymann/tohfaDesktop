@@ -146,7 +146,7 @@ namespace Tohfa
                 {
                     int i;
                     i = dataGridView1.SelectedCells[0].RowIndex;
-                    groupBox2.Text = "ستقوم بتعديل بيانات المنتج رقم: " + dataGridView1.Rows[i].Cells[0].Value.ToString();
+                    groupBox2.Text = "ستقوم بتعديل بيانات القسم رقم: " + dataGridView1.Rows[i].Cells[0].Value.ToString();
                     textBoxName.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
                     
                     buttonEditApprove.Enabled = true;
@@ -156,7 +156,7 @@ namespace Tohfa
                     groupBox2.Visible = true;
                 }
                 else
-                    MessageBox.Show("اختر الموظف للتعديل");
+                    MessageBox.Show("اختر القسم للتعديل");
             }
             else if (buttonEdit.Text == "الغاء التعديل")
             {
@@ -201,6 +201,8 @@ namespace Tohfa
         {
             editFunction();
             loadDataIntoGridView1();
+            groupBox2.ForeColor = Color.Black;
+            groupBox2.Text = "";
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

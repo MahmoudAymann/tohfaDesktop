@@ -5,7 +5,6 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Tohfa
@@ -166,16 +165,16 @@ namespace Tohfa
             pictureBox1.Image = DefaultImage;
             strFilePath = "";
 
-            textBoxCode.Clear();
-            comboBoxDepartment.SelectedIndex = -1;
+            createNewCode();
+            //comboBoxDepartment.SelectedIndex = -1;
             textBoxName.Clear();
 
             textBoxLength.Clear();
             textBoxWidth.Clear();
             textBoxHeight.Clear();
-            comboBoxMaterial.SelectedIndex = -1;
+            //comboBoxMaterial.SelectedIndex = -1;
             textBoxColor.Clear();
-            textBoxTime.Clear();
+            textBoxTime.Text = "0";
             textBoxMaterialPrice.Text = "0";
             textBoxMachinePrice.Text = "0";
 
@@ -198,6 +197,10 @@ namespace Tohfa
         {
             groupBox2.Visible = true;
             Clear();
+        }
+
+        private void createNewCode()
+        {
             string newCode;
 
             Regex re = new Regex(@"\d+");
@@ -236,7 +239,11 @@ namespace Tohfa
 
         private bool isHasRows()
         {
-            con.Open();
+            if (con.State != ConnectionState.Open)
+            {
+                con.Close();
+                con.Open();
+            }
             string sqlquery = "SELECT * FROM Product";
             cmd.Connection = con;
             cmd.CommandText = sqlquery;
@@ -613,7 +620,162 @@ namespace Tohfa
         {
             editFunction();
             loadDataIntoDGV1();
+            groupBox2.ForeColor = Color.Black;
+            groupBox2.Text = "";
         }
+
+        private void comboBoxMaterial_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxMaterial.SelectedIndex > -1)
+            {
+                string value = comboBoxMaterial.Text;
+                getMaterialPrice(value);
+            }
+        }
+
+        private void getMaterialPrice(String valName)
+        {
+            if (con.State != ConnectionState.Open)
+            {
+                con.Close();
+                con.Open();
+            }
         
+            string sqlquery = "SELECT cantiLocalCost FROM RawMaterial WHERE name=@name";
+            SqlCommand command = new SqlCommand(sqlquery, con);
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@name", valName);
+            textBoxMaterialPrice.Text = command.ExecuteScalar().ToString();
+            con.Close();
+        }
+
+        private void checkBoxOpenText_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBoxOpenText.Checked)
+            {
+                textBoxMaterialPrice.ReadOnly = true;
+            }
+            else
+                textBoxMaterialPrice.ReadOnly = false;
+        }
+
+        private void comboBoxWorkKind_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxWorkKind.SelectedIndex > -1)
+            {
+                switch (comboBoxWorkKind.SelectedIndex)
+                {
+                    case 0: //kat3
+                        if (con.State != ConnectionState.Open)
+                        {
+                            con.Close();
+                            con.Open();
+                        }
+                        string sqlquery = "SELECT CutLocal FROM CurrencyConfig";
+                        SqlCommand command = new SqlCommand(sqlquery, con);
+                        string text = command.ExecuteScalar().ToString();
+                        double txt_num = double.Parse(text);
+                        double time = double.Parse(textBoxTime.Text);
+                        string res = (txt_num * time).ToString();
+                        textBoxMachinePrice.Text = res;
+                        con.Close();
+                        break;
+                    case 1: //7afr
+                        if (con.State != ConnectionState.Open)
+                        {
+                            con.Close();
+                            con.Open();
+                        }
+                        string sqlquery2 = "SELECT DigLocal FROM CurrencyConfig";
+                        cmd = new SqlCommand(sqlquery2, con);
+                       string text1 = cmd.ExecuteScalar().ToString();
+                        double txt_num1 = double.Parse(text1);
+                        double time1 = double.Parse(textBoxTime.Text);
+                        string res1 = (txt_num1 * time1).ToString();
+                        textBoxMachinePrice.Text = res1;
+                        con.Close();
+                        break;
+                    case 2: // both of them
+                        if (con.State != ConnectionState.Open)
+                        {
+                            con.Close();
+                            con.Open();
+                        }
+                        string sqlquery3 = "SELECT DigCutLocal FROM CurrencyConfig";
+                        cmd = new SqlCommand(sqlquery3, con);
+                        string text2 = cmd.ExecuteScalar().ToString();
+                        double txt_num2 = double.Parse(text2);
+                        double time2 = double.Parse(textBoxTime.Text);
+                        string res2 = (txt_num2 * time2).ToString();
+                        textBoxMachinePrice.Text = res2;
+                        con.Close();
+                        break;
+                    default:
+                        break;
+                }//end switch
+                
+            }//end if
+        }//end 
+
+        private void getMachinePrice() {
+
+        }
+
+        private void textBoxTime_TextChanged(object sender, EventArgs e)
+        {
+            if (comboBoxWorkKind.SelectedIndex> -1)
+            {
+                switch (comboBoxWorkKind.SelectedIndex)
+                {
+                    case 0: //kat3
+                        if (con.State != ConnectionState.Open)
+                        {
+                            con.Close();
+                            con.Open();
+                        }
+                        string sqlquery = "SELECT CutLocal FROM CurrencyConfig";
+                        SqlCommand command = new SqlCommand(sqlquery, con);
+                        string text = command.ExecuteScalar().ToString();
+                        double txt_num = double.Parse(text);
+                        double time = double.Parse(textBoxTime.Text);
+                        string res = (txt_num * time).ToString();
+                        textBoxMachinePrice.Text = res;
+                        con.Close();
+                        break;
+                    case 1: //7afr
+                        if (con.State != ConnectionState.Open)
+                        {
+                            con.Close();
+                            con.Open();
+                        }
+                        string sqlquery2 = "SELECT DigLocal FROM CurrencyConfig";
+                        cmd = new SqlCommand(sqlquery2, con);
+                        string text1 = cmd.ExecuteScalar().ToString();
+                        double txt_num1 = double.Parse(text1);
+                        double time1 = double.Parse(textBoxTime.Text);
+                        string res1 = (txt_num1 * time1).ToString();
+                        textBoxMachinePrice.Text = res1;
+                        con.Close();
+                        break;
+                    case 2: // both of them
+                        if (con.State != ConnectionState.Open)
+                        {
+                            con.Close();
+                            con.Open();
+                        }
+                        string sqlquery3 = "SELECT DigCutLocal FROM CurrencyConfig";
+                        cmd = new SqlCommand(sqlquery3, con);
+                        string text2 = cmd.ExecuteScalar().ToString();
+                        double txt_num2 = double.Parse(text2);
+                        double time2 = double.Parse(textBoxTime.Text);
+                        string res2 = (txt_num2 * time2).ToString();
+                        textBoxMachinePrice.Text = res2;
+                        con.Close();
+                        break;
+                    default:
+                        break;
+                }//end switch
+            }
+        }
     }
-}
+}//end namespace

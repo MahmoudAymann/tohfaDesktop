@@ -118,32 +118,29 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="if_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_search.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="slider_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\slider_back.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_save.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_order_fromEmp_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic-order_fromEmp-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_statistics_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic-statistics-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_edit.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_bank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_Stock_Index_Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_Stock_Index_Up.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_view_refreshs" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_view_refreshs.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_drop_down_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic_drop_down-24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_product_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic-product-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_currency_dollar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_currency_dollar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_order_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic-order-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_recyclying_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic-recyclying-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="default_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\default_img.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_group_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic-group-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
@@ -151,52 +148,61 @@
   <data name="if_Stock_Index_Down" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\if_Stock_Index_Down.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_delete.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_employee_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic-employee-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_upload_26" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic-upload-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="slider_back" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\slider_back.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_service_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic-service-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="ic_order_fromEmp_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic-order_fromEmp-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="dollar_coin_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\dollar-coin-stack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="if_currency_dollar" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_currency_dollar.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="if_view_refreshs" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_view_refreshs.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_order_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic-order-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_department_48" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic-department-48.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_bank" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_bank.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_recyclying_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic-recyclying-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="default_img" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\default_img.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_search" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_search.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="if_plus_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\if_plus_add.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_service_100" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic-service-100.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_employee_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic-employee-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="ic_upload_26" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic-upload-26.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="ic_product_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\ic-product-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="if_Stock_Index_Up" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_Stock_Index_Up.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_print" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_print.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="mainpage" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\mainpage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_edit" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_edit.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="ic_supply_40" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\ic-supply-40.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="mainpage" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mainpage.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="dollar_coin_stack" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\dollar-coin-stack.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_combo_chart_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_combo_chart_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_drop_down_24dp" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_drop_down-24dp.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_plus_add" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_plus_add.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_delete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_delete.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="if_save" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\if_save.ico;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="ic_accept_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ic_accept_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

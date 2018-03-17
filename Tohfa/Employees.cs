@@ -65,7 +65,7 @@ namespace Tohfa
         {
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -85,22 +85,7 @@ namespace Tohfa
         private void buttonNew_Emp_Click(object sender, EventArgs e)
         {
             groupBox2.Visible = true;
-            string newCode;
-
-            Regex re = new Regex(@"\d+");
-            Match m = re.Match(getLastCode());
-
-            if (m.Success)
-            {
-                codeNumber = int.Parse(m.Value);
-                codeNumber += 1;
-            }
-            else
-            {
-                MessageBox.Show("You didn't enter a string containing a number!");
-            }
-            newCode = "E" + codeNumber;
-            textBoxCode.Text = newCode;
+            createNewCode();
         }
 
         private string getLastCode()
@@ -149,11 +134,31 @@ namespace Tohfa
 
         private void clearFields()
         {
-            textBoxCode.Clear();
+            createNewCode();
             textBoxName.Clear();
             textBoxPhone.Clear();
             comboBox1.SelectedIndex = -1;
             textBoxJob.Clear();
+        }
+
+        private void createNewCode()
+        {
+            string newCode;
+
+            Regex re = new Regex(@"\d+");
+            Match m = re.Match(getLastCode());
+
+            if (m.Success)
+            {
+                codeNumber = int.Parse(m.Value);
+                codeNumber += 1;
+            }
+            else
+            {
+                MessageBox.Show("You didn't enter a string containing a number!");
+            }
+            newCode = "E" + codeNumber;
+            textBoxCode.Text = newCode;
         }
 
         private void insertIntoDB()
@@ -290,6 +295,9 @@ namespace Tohfa
         {
             editFunction();
             loadDataIntoGridView1();
+            groupBox2.ForeColor = Color.Black;
+            groupBox2.Text = "";
+            clearFields();
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)

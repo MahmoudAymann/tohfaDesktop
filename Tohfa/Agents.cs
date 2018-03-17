@@ -186,7 +186,7 @@ namespace Tohfa
             {
                 string value;
                 int i = dataGridView1.CurrentCell.RowIndex;
-                value = dataGridView1.Rows[i].Cells[0].Value.ToString(); //get code
+                value = dataGridView1.Rows[i].Cells[1].Value.ToString(); //get code
 
                 deleteRecordFromDatabase(value);
 
@@ -219,7 +219,39 @@ namespace Tohfa
             loadDataIntoGridView1();
         }
 
-        private void buttonEdit_Click(object sender, EventArgs e)
+       
+        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (buttonEdit_Agent.Text == "تعديل")
+            {
+                int i;
+                i = dataGridView1.SelectedCells[0].RowIndex;
+                textBoxCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                comboBoxKind.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                textBoxName.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                textBoxAddress.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                textBoxPhone.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            }
+            else
+            {
+                int i;
+                i = dataGridView1.SelectedCells[0].RowIndex;
+                groupBox2.Text = "ستقوم بتعديل بيانات المورد رقم: " + 
+                    dataGridView1.Rows[i].Cells[1].Value.ToString();
+                textBoxCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
+                comboBoxKind.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
+                textBoxName.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                textBoxAddress.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
+                textBoxPhone.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+            }
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            groupBox2.Visible = false;
+        }
+
+        private void buttonEdit_Agent_Click(object sender, EventArgs e)
         {
             if (buttonEdit_Agent.Text == "تعديل")
             {
@@ -232,8 +264,9 @@ namespace Tohfa
                     textBoxCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
                     comboBoxKind.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
                     textBoxName.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                    textBoxAddress.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
                     textBoxPhone.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                    textBoxAddress.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
+
 
                     buttonEditApprove_Agent.Enabled = true;
                     buttonAdd_Agent.Enabled = false;
@@ -242,7 +275,7 @@ namespace Tohfa
                     groupBox2.Visible = true;
                 }
                 else
-                    MessageBox.Show("اختر عميل للتعديل");
+                    MessageBox.Show("اختر العميل للتعديل");
             }
             else if (buttonEdit_Agent.Text == "الغاء التعديل")
             {
@@ -253,6 +286,7 @@ namespace Tohfa
                 groupBox2.ForeColor = Color.Black;
             }
         }
+
 
         private void editFunction()
         {
@@ -285,41 +319,20 @@ namespace Tohfa
             }
         }
 
-        private void buttonEditApprove_Click(object sender, EventArgs e)
+        private void buttonEditApprove_Agent_Click(object sender, EventArgs e)
         {
             editFunction();
             loadDataIntoGridView1();
+            groupBox2.ForeColor = Color.Black;
+            groupBox2.Text = "";
         }
 
-        private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
+        private void textBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (buttonEdit_Agent.Text == "تعديل")
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
-                int i;
-                i = dataGridView1.SelectedCells[0].RowIndex;
-                textBoxCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                comboBoxKind.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                textBoxName.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                textBoxAddress.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                textBoxPhone.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
+                e.Handled = true;
             }
-            else
-            {
-                int i;
-                i = dataGridView1.SelectedCells[0].RowIndex;
-                groupBox2.Text = "ستقوم بتعديل بيانات المورد رقم: " + 
-                    dataGridView1.Rows[i].Cells[1].Value.ToString();
-                textBoxCode.Text = dataGridView1.Rows[i].Cells[1].Value.ToString();
-                comboBoxKind.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
-                textBoxName.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
-                textBoxAddress.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
-                textBoxPhone.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
-            }
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
-            groupBox2.Visible = false;
         }
     }
 }

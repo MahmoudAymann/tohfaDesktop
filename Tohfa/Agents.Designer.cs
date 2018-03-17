@@ -38,6 +38,7 @@
             this.buttonAdd_Agent = new System.Windows.Forms.Button();
             this.buttonNew_Agent = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.comboBoxKind = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
@@ -50,7 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -95,6 +95,7 @@
             this.buttonEditApprove_Agent.TabIndex = 20;
             this.buttonEditApprove_Agent.Text = "تنفيذ";
             this.buttonEditApprove_Agent.UseVisualStyleBackColor = false;
+            this.buttonEditApprove_Agent.Click += new System.EventHandler(this.buttonEditApprove_Agent_Click);
             // 
             // buttonEdit_Agent
             // 
@@ -107,6 +108,7 @@
             this.buttonEdit_Agent.Text = "تعديل";
             this.buttonEdit_Agent.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.buttonEdit_Agent.UseVisualStyleBackColor = true;
+            this.buttonEdit_Agent.Click += new System.EventHandler(this.buttonEdit_Agent_Click);
             // 
             // buttonLoad_Agent
             // 
@@ -182,6 +184,17 @@
             this.groupBox2.Text = "بيانات العميل";
             this.groupBox2.Visible = false;
             // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(2, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 35;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // comboBoxKind
             // 
             this.comboBoxKind.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
@@ -218,6 +231,7 @@
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(250, 20);
             this.textBoxPhone.TabIndex = 6;
+            this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhone_KeyPress);
             // 
             // textBoxName
             // 
@@ -294,17 +308,6 @@
             this.dataGridView1.RowHeadersVisible = false;
             this.dataGridView1.Size = new System.Drawing.Size(586, 363);
             this.dataGridView1.TabIndex = 0;
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(2, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 24);
-            this.button1.TabIndex = 35;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Agents
             // 

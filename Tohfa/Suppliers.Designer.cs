@@ -38,6 +38,9 @@
             this.buttonAdd_Suppliers = new System.Windows.Forms.Button();
             this.buttonNew_Suppliers = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.textBoxSuppliersKind = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
             this.textBoxAddress = new System.Windows.Forms.TextBox();
             this.textBoxPhone = new System.Windows.Forms.TextBox();
             this.textBoxName = new System.Windows.Forms.TextBox();
@@ -48,7 +51,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -110,11 +112,12 @@
             // 
             // buttonLoad_Suppliers
             // 
+            this.buttonLoad_Suppliers.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.buttonLoad_Suppliers.Image = global::Tohfa.Properties.Resources.if_view_refreshs;
             this.buttonLoad_Suppliers.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonLoad_Suppliers.Location = new System.Drawing.Point(6, 472);
+            this.buttonLoad_Suppliers.Location = new System.Drawing.Point(3, 475);
             this.buttonLoad_Suppliers.Name = "buttonLoad_Suppliers";
-            this.buttonLoad_Suppliers.Size = new System.Drawing.Size(123, 57);
+            this.buttonLoad_Suppliers.Size = new System.Drawing.Size(129, 57);
             this.buttonLoad_Suppliers.TabIndex = 5;
             this.buttonLoad_Suppliers.Text = "تحديث";
             this.buttonLoad_Suppliers.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -148,11 +151,12 @@
             // 
             // buttonNew_Suppliers
             // 
+            this.buttonNew_Suppliers.Dock = System.Windows.Forms.DockStyle.Top;
             this.buttonNew_Suppliers.Image = global::Tohfa.Properties.Resources.if_plus_add;
             this.buttonNew_Suppliers.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.buttonNew_Suppliers.Location = new System.Drawing.Point(6, 13);
+            this.buttonNew_Suppliers.Location = new System.Drawing.Point(3, 16);
             this.buttonNew_Suppliers.Name = "buttonNew_Suppliers";
-            this.buttonNew_Suppliers.Size = new System.Drawing.Size(123, 70);
+            this.buttonNew_Suppliers.Size = new System.Drawing.Size(129, 70);
             this.buttonNew_Suppliers.TabIndex = 0;
             this.buttonNew_Suppliers.Text = "جديد";
             this.buttonNew_Suppliers.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
@@ -161,6 +165,8 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.textBoxSuppliersKind);
+            this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.textBoxAddress);
             this.groupBox2.Controls.Add(this.textBoxPhone);
@@ -173,11 +179,38 @@
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox2.Location = new System.Drawing.Point(135, 0);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(453, 145);
+            this.groupBox2.Size = new System.Drawing.Size(453, 162);
             this.groupBox2.TabIndex = 26;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "بيانات المورد";
             this.groupBox2.Visible = false;
+            // 
+            // textBoxSuppliersKind
+            // 
+            this.textBoxSuppliersKind.Location = new System.Drawing.Point(107, 131);
+            this.textBoxSuppliersKind.Name = "textBoxSuppliersKind";
+            this.textBoxSuppliersKind.Size = new System.Drawing.Size(250, 20);
+            this.textBoxSuppliersKind.TabIndex = 38;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(363, 134);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(57, 13);
+            this.label5.TabIndex = 37;
+            this.label5.Text = "نوع الخامة:";
+            // 
+            // button1
+            // 
+            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(2, 7);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(24, 24);
+            this.button1.TabIndex = 36;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // textBoxAddress
             // 
@@ -192,6 +225,7 @@
             this.textBoxPhone.Name = "textBoxPhone";
             this.textBoxPhone.Size = new System.Drawing.Size(250, 20);
             this.textBoxPhone.TabIndex = 14;
+            this.textBoxPhone.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhone_KeyPress);
             // 
             // textBoxName
             // 
@@ -249,9 +283,9 @@
             // 
             this.groupBox3.Controls.Add(this.dataGridView1);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(135, 145);
+            this.groupBox3.Location = new System.Drawing.Point(135, 162);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(453, 390);
+            this.groupBox3.Size = new System.Drawing.Size(453, 373);
             this.groupBox3.TabIndex = 27;
             this.groupBox3.TabStop = false;
             // 
@@ -265,20 +299,9 @@
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersVisible = false;
-            this.dataGridView1.Size = new System.Drawing.Size(447, 371);
+            this.dataGridView1.Size = new System.Drawing.Size(447, 354);
             this.dataGridView1.TabIndex = 0;
             this.dataGridView1.CellMouseDoubleClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDoubleClick);
-            // 
-            // button1
-            // 
-            this.button1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(2, 7);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(24, 24);
-            this.button1.TabIndex = 36;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // Suppliers
             // 
@@ -327,5 +350,7 @@
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox textBoxSuppliersKind;
+        private System.Windows.Forms.Label label5;
     }
 }

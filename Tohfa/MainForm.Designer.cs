@@ -36,6 +36,8 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.تهيئةالاسعارToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ToolStripMenuItemCurrency = new System.Windows.Forms.ToolStripMenuItem();
+            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.button1 = new System.Windows.Forms.Button();
             this.sPanel = new System.Windows.Forms.Panel();
             this.buttonReports = new System.Windows.Forms.Button();
             this.buttonOrder = new System.Windows.Forms.Button();
@@ -46,7 +48,7 @@
             this.buttonEmployees = new System.Windows.Forms.Button();
             this.buttonSuppliers = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
+            this.buttonStore = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.menuStrip1.SuspendLayout();
             this.sPanel.SuspendLayout();
@@ -109,6 +111,36 @@
             this.ToolStripMenuItemCurrency.Text = "تهيئة الأسعار";
             this.ToolStripMenuItemCurrency.Click += new System.EventHandler(this.ToolStripMenuItemCurrency_Click);
             // 
+            // linkLabel1
+            // 
+            this.linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.linkLabel1.AutoSize = true;
+            this.linkLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
+            this.linkLabel1.Location = new System.Drawing.Point(800, 625);
+            this.linkLabel1.Name = "linkLabel1";
+            this.linkLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.linkLabel1.Size = new System.Drawing.Size(72, 19);
+            this.linkLabel1.TabIndex = 3;
+            this.linkLabel1.TabStop = true;
+            this.linkLabel1.Text = "Tohfa.net";
+            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Image = global::Tohfa.Properties.Resources.ic_combo_chart_64;
+            this.button1.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.button1.Location = new System.Drawing.Point(659, 37);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(213, 100);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "الإيرادات";
+            this.button1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // sPanel
             // 
             this.sPanel.BackColor = System.Drawing.Color.White;
@@ -132,6 +164,7 @@
             // 
             // buttonReports
             // 
+            this.buttonReports.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonReports.Image = ((System.Drawing.Image)(resources.GetObject("buttonReports.Image")));
             this.buttonReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonReports.Location = new System.Drawing.Point(4, 561);
@@ -144,6 +177,7 @@
             // 
             // buttonOrder
             // 
+            this.buttonOrder.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonOrder.Image = ((System.Drawing.Image)(resources.GetObject("buttonOrder.Image")));
             this.buttonOrder.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonOrder.Location = new System.Drawing.Point(3, 496);
@@ -156,6 +190,7 @@
             // 
             // buttonDepartment
             // 
+            this.buttonDepartment.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonDepartment.Image = ((System.Drawing.Image)(resources.GetObject("buttonDepartment.Image")));
             this.buttonDepartment.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonDepartment.Location = new System.Drawing.Point(4, 301);
@@ -168,6 +203,7 @@
             // 
             // buttonRaw
             // 
+            this.buttonRaw.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonRaw.Image = ((System.Drawing.Image)(resources.GetObject("buttonRaw.Image")));
             this.buttonRaw.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonRaw.Location = new System.Drawing.Point(4, 366);
@@ -180,6 +216,7 @@
             // 
             // buttonAgents
             // 
+            this.buttonAgents.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonAgents.Image = ((System.Drawing.Image)(resources.GetObject("buttonAgents.Image")));
             this.buttonAgents.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonAgents.Location = new System.Drawing.Point(4, 171);
@@ -192,6 +229,7 @@
             // 
             // buttonProducts
             // 
+            this.buttonProducts.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonProducts.Image = ((System.Drawing.Image)(resources.GetObject("buttonProducts.Image")));
             this.buttonProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonProducts.Location = new System.Drawing.Point(4, 431);
@@ -204,6 +242,7 @@
             // 
             // buttonEmployees
             // 
+            this.buttonEmployees.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonEmployees.Image = ((System.Drawing.Image)(resources.GetObject("buttonEmployees.Image")));
             this.buttonEmployees.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonEmployees.Location = new System.Drawing.Point(4, 236);
@@ -216,6 +255,7 @@
             // 
             // buttonSuppliers
             // 
+            this.buttonSuppliers.Font = new System.Drawing.Font("Times New Roman", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.buttonSuppliers.Image = ((System.Drawing.Image)(resources.GetObject("buttonSuppliers.Image")));
             this.buttonSuppliers.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.buttonSuppliers.Location = new System.Drawing.Point(3, 106);
@@ -237,21 +277,19 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
-            // linkLabel1
+            // buttonStore
             // 
-            this.linkLabel1.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.HoverUnderline;
-            this.linkLabel1.Location = new System.Drawing.Point(800, 625);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.linkLabel1.Size = new System.Drawing.Size(72, 19);
-            this.linkLabel1.TabIndex = 3;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "Tohfa.net";
-            this.linkLabel1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.linkLabel1.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel1_LinkClicked);
+            this.buttonStore.Font = new System.Drawing.Font("Times New Roman", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.buttonStore.Image = global::Tohfa.Properties.Resources.ic_combo_chart_64;
+            this.buttonStore.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.buttonStore.Location = new System.Drawing.Point(659, 143);
+            this.buttonStore.Name = "buttonStore";
+            this.buttonStore.Size = new System.Drawing.Size(213, 100);
+            this.buttonStore.TabIndex = 5;
+            this.buttonStore.Text = "الخزينة";
+            this.buttonStore.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.buttonStore.UseVisualStyleBackColor = true;
+            this.buttonStore.Click += new System.EventHandler(this.buttonStore_Click);
             // 
             // MainForm
             // 
@@ -259,6 +297,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DarkSalmon;
             this.ClientSize = new System.Drawing.Size(884, 653);
+            this.Controls.Add(this.buttonStore);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.linkLabel1);
             this.Controls.Add(this.sPanel);
             this.Controls.Add(this.panel1);
@@ -302,6 +342,8 @@
         private System.Windows.Forms.ToolStripMenuItem تهيئةالاسعارToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem ToolStripMenuItemCurrency;
         private System.Windows.Forms.LinkLabel linkLabel1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button buttonStore;
     }
 }
 

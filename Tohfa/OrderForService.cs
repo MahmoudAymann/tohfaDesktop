@@ -5,8 +5,6 @@ using System.Configuration;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -26,6 +24,7 @@ namespace Tohfa
         //global var
         string mCM;
 
+
         public OrderForService()
         {
             InitializeComponent();
@@ -33,6 +32,16 @@ namespace Tohfa
             fillComboBoxAgent();
             fillComboBoxRawMaterial();
             loadDataIntoGridView1();
+            if (checkBox1.Checked == true)
+            {
+                labelPaid.Visible = false;
+                textBoxPaidd.Visible = false;
+            }
+            else
+            {
+                labelPaid.Visible = true;
+                textBoxPaidd.Visible = true;
+            }
         }
 
         private void fillComboBoxAgent()
@@ -128,7 +137,7 @@ namespace Tohfa
         {
             dataGridView1.Columns[0].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
-            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[5].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
@@ -149,11 +158,15 @@ namespace Tohfa
             dataGridView1.Columns[7].HeaderText = "وقت الماكينة";
             dataGridView1.Columns[8].HeaderText = "نوع العمل";
             dataGridView1.Columns[9].HeaderText = "سعر الماكينة";
-            dataGridView1.Columns[10].HeaderText = "الاجمالى";
+            dataGridView1.Columns[10].HeaderText = "سعر الوحدة";
             dataGridView1.Columns[11].HeaderText = "التاريخ";
+            dataGridView1.Columns[12].HeaderText = "العدد";
+            dataGridView1.Columns[13].HeaderText = "اجمالى الكل";
+            dataGridView1.Columns[14].HeaderText = "تم الدفع";
+
+
 
             dataGridView1.Columns[0].Visible = false;
-            dataGridView1.Columns[11].Visible = false;
 
         }//end resizeGridView1
 
@@ -223,32 +236,86 @@ namespace Tohfa
 
         private void buttonAdd_OrServ_Click(object sender, EventArgs e)
         {
-            insertIntoDB();
-            loadDataIntoGridView1();
-            clearFields();
+            if (!labelQuantity.Visible)
+            {
+                string done;
+                if (checkBox1.Checked)
+                {
+                    done = "نعم";
+                    insertTORevenueYes();
+                    insertIntoTotal();
+                }
+                else
+                {
+                    done = "لا";
+                    insertTORevenueNo();
+                    insertIntoTotal();
+                }
+                insertNewQuantityInRawMaterialDB();
+                insertIntoDB(done);
+
+                loadDataIntoGridView1();
+                clearFields();
+            }
+            else {
+                MessageBox.Show("افحص الطول والعرض المناسبين");
+            }
+        }
+
+        private void insertNewQuantityInRawMaterialDB()
+        {
+            if (textBoxLength.Text != "" && textBoxWidth.Text != "")
+            {
+                double numlength = double.Parse(textBoxLength.Text);
+                double numWidth = double.Parse(textBoxWidth.Text);
+                double sum = numlength * numWidth;
+                double oldQuantity = getQuantityFromRawMAterial(comboBoxRawName.Text);
+                double res = oldQuantity - sum;
+
+                updateQuantityInRawMaterialDB(res);
+            }
+        }
+
+        private void updateQuantityInRawMaterialDB(double res)
+        {
+            if (con.State != ConnectionState.Open)
+            {
+                con.Close();
+                con.Open();
+            }
+
+            cmd.CommandText = "UPDATE RawMaterial SET quantity=@quantity WHERE name = @name";
+            cmd.Connection = con;
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@quantity", res);
+            cmd.Parameters.AddWithValue("@name", comboBoxRawName.Text);
+            cmd.ExecuteNonQuery();
+            con.Close();
+            MessageBox.Show("done minus");
         }
 
         private void clearFields()
         {
-            comboBoxAgent.SelectedIndex = -1;
-            comboBoxRawName.SelectedIndex = -1;
-            
+            //comboBoxAgent.SelectedIndex = -1;
+            //comboBoxRawName.SelectedIndex = -1;
+            createNewCode();
             textBoxLength.Clear();
             textBoxWidth.Clear();
-            textBoxMaterialPrice.Clear();
+            textBoxMaterialPrice.Text = "0";
             textBoxTime.Clear();
-            comboBoxWorkKind.SelectedIndex = -1;
-            textBoxMachinePrice.Clear();
-            textBoxTotal.Clear();
+            //comboBoxWorkKind.SelectedIndex = -1;
+            textBoxMachinePrice.Text="0";
+            textBoxTotal.Text = "0";
         }
 
-        private void insertIntoDB()
+        private void insertIntoDB(string done)
         {
             try
             {
                 con.Open();
                 cmd.CommandText = "INSERT INTO OrderForService VALUES(@code, @agent, @materialName," +
-                    " @length, @width,@materialPrice,@time,@workKind, @machinePrice, @total,@date)";
+                    " @length, @width,@materialPrice,@time,@workKind, " +
+                    "@machinePrice, @total,@date,@count,@totalAll,@check)";
                 cmd.Connection = con;
                 cmd.Parameters.Clear(); //very important
                 cmd.Parameters.AddWithValue("@code", textBoxCode.Text);
@@ -262,6 +329,9 @@ namespace Tohfa
                 cmd.Parameters.AddWithValue("@machinePrice", textBoxMachinePrice.Text);
                 cmd.Parameters.AddWithValue("@total", textBoxTotal.Text);
                 cmd.Parameters.AddWithValue("@date", textBoxDate.Text);
+                cmd.Parameters.AddWithValue("@count", textBoxCount.Text);
+                cmd.Parameters.AddWithValue("@totalAll", textBoxAllTotal.Text);
+                cmd.Parameters.AddWithValue("@check", done);
 
                 cmd.ExecuteNonQuery();
 
@@ -272,8 +342,126 @@ namespace Tohfa
                 con.Close();
                 MessageBox.Show(ex.Message);
             }
+
         }//end insertData()
-        
+       private void insertTORevenueYes()  {
+            try
+            {
+                con.Open();
+                cmd.CommandText = "INSERT INTO Revenue VALUES(@nameAgent, @total, @paid," +
+                    " @change,@checkk)";
+                cmd.Connection = con;
+                cmd.Parameters.Clear(); //very important
+                cmd.Parameters.AddWithValue("@nameAgent", comboBoxAgent.Text);
+                cmd.Parameters.AddWithValue("@total", textBoxAllTotal.Text);
+                cmd.Parameters.AddWithValue("@paid", textBoxAllTotal.Text);
+                cmd.Parameters.AddWithValue("@change", "0");
+                cmd.Parameters.AddWithValue("@checkk", "نعم");
+
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }//insertTORevenueYes
+
+        private void insertIntoTotal() {
+            //truncateTableFirst();
+           string res = sumTotalNumbersFromRevenue();
+            try
+            {
+                con.Open();
+                cmd.CommandText = "INSERT INTO Total VALUES(@name, @total)";
+                cmd.Connection = con;
+                cmd.Parameters.Clear(); //very important
+                cmd.Parameters.AddWithValue("@name", comboBoxAgent.Text);
+                cmd.Parameters.AddWithValue("@total", double.Parse(res));
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private string sumTotalNumbersFromRevenue()
+        {
+            string sumRes="0";
+            if (con.State != ConnectionState.Open)
+            {
+                con.Close();
+                con.Open();
+            }
+            
+            cmd.CommandText = "SELECT SUM(total) FROM Revenue WHERE nameAgent=@nameAgent";
+            cmd.Connection = con;
+            cmd.Parameters.Clear();
+            cmd.Parameters.AddWithValue("@nameAgent", comboBoxAgent.Text);
+            SqlDataReader oReader = cmd.ExecuteReader();
+            while (oReader.Read())
+            {
+                sumRes = oReader[0].ToString();
+            }
+            con.Close();
+            return sumRes;
+        }
+
+        private void truncateTableFirst()
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandText = "TRUNCATE TABLE Total";
+                cmd.Connection = con;
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void insertTORevenueNo()
+        {
+            try
+            {
+                con.Open();
+                cmd.CommandText = "INSERT INTO Revenue VALUES(@nameAgent, @total, @paid," +
+                    " @change,@checkk)";
+                cmd.Connection = con;
+                cmd.Parameters.Clear(); //very important
+                cmd.Parameters.AddWithValue("@nameAgent", comboBoxAgent.Text);
+                cmd.Parameters.AddWithValue("@total", textBoxAllTotal.Text);
+                cmd.Parameters.AddWithValue("@paid", textBoxPaidd.Text);
+                double total = double.Parse(textBoxAllTotal.Text);
+                double priceres = double.Parse(textBoxPaidd.Text);
+
+                string final = (total - priceres).ToString();
+                cmd.Parameters.AddWithValue("@change", final);
+
+                cmd.Parameters.AddWithValue("@checkk", "لا");
+
+                cmd.ExecuteNonQuery();
+
+                con.Close();
+            }
+            catch (Exception ex)
+            {
+                con.Close();
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         private void buttonLoad_OrServ_Click(object sender, EventArgs e)
         {
             loadDataIntoGridView1();
@@ -281,8 +469,10 @@ namespace Tohfa
         
         private void comboBoxAgent_SelectedIndexChanged(object sender, EventArgs e)
         {
-            //string agentName = comboBoxAgent.Text;
-            //getAgentKind(agentName);
+            if (comboBoxAgent.SelectedIndex >-1)
+            {
+                getAgentKind();
+            }
         }
 
         private int getAgentKind()
@@ -365,10 +555,7 @@ namespace Tohfa
                     break;
             }
         }
-
-  
-
-
+        
         private string getDigValue()
         {
             switch (getAgentKind())
@@ -507,40 +694,145 @@ namespace Tohfa
         }
 
         private void comboBoxRawName_SelectedIndexChanged(object sender, EventArgs e)
-        { 
-            mCM =  getCantiMeterPriceForProduct(comboBoxRawName.Text);
-
-            if (textBoxWidth.Text != "" & textBoxLength.Text !="")
+        {
+            if (comboBoxRawName.SelectedIndex >-1)
             {
-                setMaterialPrice(mCM, textBoxLength.Text, textBoxWidth.Text);
+                mCM = getRawMaterialCantiPriceDependingOnKind(comboBoxRawName.Text);
+                if (textBoxWidth.Text != "" & textBoxLength.Text != "" && mCM !="-1")
+                {
+                    setMaterialPrice(mCM, textBoxLength.Text, textBoxWidth.Text);
+                }
+                sumToTotal(textBoxMaterialPrice.Text, textBoxMachinePrice.Text);
             }
 
-            sumToTotal(textBoxMaterialPrice.Text, textBoxMachinePrice.Text);
+        }
+
+        private string getRawMaterialCantiPriceDependingOnKind(string text)
+        {
+            int agentKind;
+            if (comboBoxAgent.SelectedIndex > -1)
+            {
+                agentKind = getAgentKind();
+                switch (agentKind)
+                {
+                    case 0: //2ta3y
+                        con.Open();
+                        cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        cmd.CommandText = "SELECT cantiLocalCost FROM RawMaterial WHERE name=@name";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@name", text);
+                        string resLocal = cmd.ExecuteScalar().ToString();
+                        con.Close();
+                        return resLocal;
+
+                    case 1: //5as
+                        con.Open();
+                        cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        cmd.CommandText = "SELECT cantiSpecialCost FROM RawMaterial WHERE name=@name";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@name", text);
+                        string resSpecial = cmd.ExecuteScalar().ToString();
+                        con.Close();
+                        return resSpecial;
+
+                    case 2: // gomla
+                        con.Open();
+                        cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        cmd.CommandText = "SELECT cantiManufactureCost FROM RawMaterial WHERE name=@name";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@name", text);
+                        string resManufacture = cmd.ExecuteScalar().ToString();
+                        con.Close();
+                        return resManufacture;
+
+                    case 3: //nos gomla
+                        con.Open();
+                        cmd = new SqlCommand();
+                        cmd.Connection = con;
+                        cmd.CommandText = "SELECT cantiHalfManuCost FROM RawMaterial WHERE name=@name";
+                        cmd.Parameters.Clear();
+                        cmd.Parameters.AddWithValue("@name", text);
+                        string resHalfManu = cmd.ExecuteScalar().ToString();
+                        con.Close();
+                        return resHalfManu;
+
+                    default:
+                        return "-1";
+                }//end switch
+            }//end if
+
+            else
+            {
+                MessageBox.Show("plz, pick an Agent First");
+                return "-1";
+            }
         }
 
         private void setMaterialPrice(string canti, string length, string width)
         {
             double CM_Number, length_Number, width_Number;
             CM_Number = double.Parse(canti);
+          
             length_Number = double.Parse(length);
             width_Number = double.Parse(width);
 
             double res = CM_Number * length_Number * width_Number;
             textBoxMaterialPrice.Text = res.ToString();
 
+            if (textBoxLength.Text !="" && textBoxWidth.Text !="")
+            {
+                if (comboBoxRawName.SelectedIndex > -1)
+                {
+                   double quantity = getQuantityFromRawMAterial(comboBoxRawName.Text);
+                    if ((length_Number * width_Number) > quantity)
+                    {
+                        showNotifyLabel(quantity);
+                    }
+                    else
+                    {
+                        removeNotifyLabel();
+                    }
+                }
+            }
         }
-        
-        private string getCantiMeterPriceForProduct(string text)
+
+        private void removeNotifyLabel()
         {
-            con.Open();
-            cmd = new SqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "SELECT cantiCost FROM RawMaterial WHERE name=@name";
-            cmd.Parameters.Clear();
-            cmd.Parameters.AddWithValue("@name",text);
-            string res = cmd.ExecuteScalar().ToString();
+            labelQuantity.Visible = false;
+            labelQuantity.Text = "";
+            labelQuantity.ForeColor = Color.Black;
+
+            labelLength.ForeColor = Color.Black;
+            labelWidth.ForeColor = Color.Black;
+        }
+
+        private double getQuantityFromRawMAterial(string name)
+        {
+            if (con.State != ConnectionState.Open)
+            {
+                con.Close();
+                con.Open();
+            }
+            string sqlquery = "SELECT quantity FROM RawMaterial WHERE name=@name";
+            SqlCommand command = new SqlCommand(sqlquery, con);
+            command.Parameters.Clear();
+            command.Parameters.AddWithValue("@name", name);
+            String res = command.ExecuteScalar().ToString();
             con.Close();
-            return res;
+            return double.Parse(res);
+        }
+
+        private void showNotifyLabel(double quantity)
+        {
+            labelQuantity.Visible = true;
+            labelQuantity.Text ="عفوا لديك كمية متوفرة الأن" +"="+quantity.ToString();
+            labelQuantity.ForeColor = Color.Red;
+
+            labelLength.ForeColor = Color.Red;
+            labelWidth.ForeColor = Color.Red;
         }
 
         private void textBoxLength_TextChanged(object sender, EventArgs e)
@@ -554,6 +846,7 @@ namespace Tohfa
             }
 
             sumToTotal(textBoxMaterialPrice.Text, textBoxMachinePrice.Text);
+
         }
 
         private void textBoxWidth_TextChanged(object sender, EventArgs e)
@@ -623,6 +916,63 @@ namespace Tohfa
             cmd.Parameters.AddWithValue("@code", value);
             cmd.ExecuteNonQuery();
             con.Close();
+        }
+
+        private void textBoxLength_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxWidth_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) &&
+        (e.KeyChar != '.'))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void textBoxCount_TextChanged(object sender, EventArgs e)
+        {
+            setTotalPrice();
+        }
+
+        private void textBoxTotal_TextChanged(object sender, EventArgs e)
+        {
+            setTotalPrice();
+        }
+
+        private void setTotalPrice()
+        {
+            if (textBoxCount.Text != "")
+            {
+                double onePrice = double.Parse(textBoxTotal.Text);
+                double count = double.Parse(textBoxCount.Text);
+
+                double res = onePrice * count;
+
+                textBoxAllTotal.Text = res.ToString();
+
+            }
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (checkBox1.Checked == true)
+            {
+                labelPaid.Visible = false;
+                textBoxPaidd.Visible = false;
+            }
+            else
+            {
+                labelPaid.Visible = true;
+                textBoxPaidd.Visible = true;
+            }
         }
     }
 }

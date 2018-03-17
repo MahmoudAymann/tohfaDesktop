@@ -135,6 +135,21 @@ namespace Tohfa
         {
             System.Diagnostics.Process.Start("www.tohfa.net");
         }
-        
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Revenue"] == null)
+            {
+                new Revenue().Show();
+            }
+        }
+
+        private void buttonStore_Click(object sender, EventArgs e)
+        {
+            if (Application.OpenForms["Store"] == null)
+            {
+                new Store().Show();
+            }
+        }
     }//end class
 }//end namespace

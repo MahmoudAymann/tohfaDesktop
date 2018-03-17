@@ -41,6 +41,7 @@
             this.comboBoxWorkKind = new System.Windows.Forms.ComboBox();
             this.label15 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.checkBoxOpenText = new System.Windows.Forms.CheckBox();
             this.label14 = new System.Windows.Forms.Label();
             this.textBoxMachinePrice = new System.Windows.Forms.TextBox();
             this.textBoxTotal = new System.Windows.Forms.TextBox();
@@ -235,6 +236,7 @@
             this.comboBoxWorkKind.Name = "comboBoxWorkKind";
             this.comboBoxWorkKind.Size = new System.Drawing.Size(302, 24);
             this.comboBoxWorkKind.TabIndex = 39;
+            this.comboBoxWorkKind.SelectedIndexChanged += new System.EventHandler(this.comboBoxWorkKind_SelectedIndexChanged);
             // 
             // label15
             // 
@@ -248,6 +250,7 @@
             // 
             // groupBox4
             // 
+            this.groupBox4.Controls.Add(this.checkBoxOpenText);
             this.groupBox4.Controls.Add(this.label14);
             this.groupBox4.Controls.Add(this.textBoxMachinePrice);
             this.groupBox4.Controls.Add(this.textBoxTotal);
@@ -261,6 +264,17 @@
             this.groupBox4.TabIndex = 37;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "الاسعار";
+            // 
+            // checkBoxOpenText
+            // 
+            this.checkBoxOpenText.AutoSize = true;
+            this.checkBoxOpenText.Location = new System.Drawing.Point(169, 23);
+            this.checkBoxOpenText.Name = "checkBoxOpenText";
+            this.checkBoxOpenText.Size = new System.Drawing.Size(52, 17);
+            this.checkBoxOpenText.TabIndex = 39;
+            this.checkBoxOpenText.Text = "تعديل";
+            this.checkBoxOpenText.UseVisualStyleBackColor = true;
+            this.checkBoxOpenText.CheckedChanged += new System.EventHandler(this.checkBoxOpenText_CheckedChanged);
             // 
             // label14
             // 
@@ -321,6 +335,7 @@
             this.textBoxMaterialPrice.Font = new System.Drawing.Font("Tahoma", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBoxMaterialPrice.Location = new System.Drawing.Point(227, 19);
             this.textBoxMaterialPrice.Name = "textBoxMaterialPrice";
+            this.textBoxMaterialPrice.ReadOnly = true;
             this.textBoxMaterialPrice.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.textBoxMaterialPrice.Size = new System.Drawing.Size(250, 23);
             this.textBoxMaterialPrice.TabIndex = 22;
@@ -356,7 +371,9 @@
             this.textBoxTime.Name = "textBoxTime";
             this.textBoxTime.Size = new System.Drawing.Size(140, 23);
             this.textBoxTime.TabIndex = 32;
+            this.textBoxTime.Text = "0";
             this.textBoxTime.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.textBoxTime.TextChanged += new System.EventHandler(this.textBoxTime_TextChanged);
             // 
             // label11
             // 
@@ -377,6 +394,7 @@
             this.comboBoxMaterial.Name = "comboBoxMaterial";
             this.comboBoxMaterial.Size = new System.Drawing.Size(302, 24);
             this.comboBoxMaterial.TabIndex = 30;
+            this.comboBoxMaterial.SelectedIndexChanged += new System.EventHandler(this.comboBoxMaterial_SelectedIndexChanged);
             // 
             // buttonAddImg
             // 
@@ -659,5 +677,6 @@
         private System.Windows.Forms.TextBox textBoxTotal;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.CheckBox checkBoxOpenText;
     }
 }

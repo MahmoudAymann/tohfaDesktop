@@ -16,6 +16,7 @@ namespace Tohfa
         DataTable dataTable;
 
         int codeNumber = 0;
+
         public Suppliers()
         {
             InitializeComponent();
@@ -60,12 +61,15 @@ namespace Tohfa
             dataGridView1.Columns[2].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             dataGridView1.Columns[3].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
             dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
+            dataGridView1.Columns[4].AutoSizeMode = DataGridViewAutoSizeColumnMode.DisplayedCells;
 
             dataGridView1.Columns[0].HeaderText = "id";
             dataGridView1.Columns[1].HeaderText = "كود";
             dataGridView1.Columns[2].HeaderText = "الاسم";
             dataGridView1.Columns[3].HeaderText = "رقم";
             dataGridView1.Columns[4].HeaderText = "عنوان";
+            dataGridView1.Columns[5].HeaderText = "نوع المورد";
+
 
             dataGridView1.Columns[0].Visible = false;
 
@@ -78,7 +82,6 @@ namespace Tohfa
 
         private void buttonNew_Suppliers_Click(object sender, EventArgs e)
         {
-            
             groupBox2.Visible = true;
 
             string newCode;
@@ -99,8 +102,7 @@ namespace Tohfa
             textBoxCode.Text = newCode;
         }//end button New
 
-        private string getLastCode()
-        {
+        private string getLastCode(){
             if (isHasRows())
             {
                 con.Open();
@@ -112,14 +114,11 @@ namespace Tohfa
             }
             else
             {
-                MessageBox.Show("is has row false");
                 return "S0";
-                
             }
         }
 
-        private bool isHasRows()
-        {
+        private bool isHasRows(){
             con.Open();
             string sqlquery = "SELECT * FROM Supplier";
             cmd.Connection = con;
@@ -157,14 +156,14 @@ namespace Tohfa
             try
             {
                 con.Open();
-                cmd.CommandText = "INSERT INTO Supplier (code, name, phone, address) VALUES(@code, @name, @phone, @address)";
+                cmd.CommandText = "INSERT INTO Supplier (code, name, phone, address,kind) VALUES (@code, @name, @phone, @address,@kind)";
                 cmd.Connection = con;
                 cmd.Parameters.Clear(); //very important
                 cmd.Parameters.AddWithValue("@code", textBoxCode.Text);
                 cmd.Parameters.AddWithValue("@name", textBoxName.Text);
                 cmd.Parameters.AddWithValue("@phone", textBoxPhone.Text);
                 cmd.Parameters.AddWithValue("@address", textBoxAddress.Text);
-
+                cmd.Parameters.AddWithValue("@kind", textBoxSuppliersKind.Text);
                 cmd.ExecuteNonQuery();
 
                 con.Close();
@@ -185,7 +184,6 @@ namespace Tohfa
                 value = dataGridView1.Rows[i].Cells[1].Value.ToString(); //get code
 
                 deleteRecordFromDatabase(value);
-                MessageBox.Show(value);
 
                 loadDataIntoGridView1();
             }
@@ -226,6 +224,8 @@ namespace Tohfa
                     textBoxName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
                     textBoxAddress.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
                     textBoxPhone.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                    textBoxSuppliersKind.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
+
 
                     buttonEditApprove_Suppliers.Enabled = true;
                     buttonAdd_Suppliers.Enabled = false;
@@ -256,7 +256,7 @@ namespace Tohfa
             try
             {
                 string sqlquery = "UPDATE Supplier SET code = @code, " +
-                    " name = @name, phone = @phone, address = @address WHERE code=@code";
+                    " name = @name, phone = @phone, address = @address, kind=@kind WHERE code=@code";
 
                 SqlCommand cmd = new SqlCommand(sqlquery, con);
                 cmd.Parameters.Clear();
@@ -264,6 +264,7 @@ namespace Tohfa
                 cmd.Parameters.AddWithValue("@name", textBoxName.Text);
                 cmd.Parameters.AddWithValue("@phone", textBoxPhone.Text);
                 cmd.Parameters.AddWithValue("@address", textBoxAddress.Text);
+                cmd.Parameters.AddWithValue("@kind", textBoxSuppliersKind.Text);
 
                 cmd.ExecuteNonQuery();
                 con.Close();
@@ -280,6 +281,14 @@ namespace Tohfa
         {
             editFunction();
             loadDataIntoGridView1();
+            groupBox2.ForeColor = Color.Black;
+            groupBox2.Text = "";
+            restoreEdit();
+        }
+
+        private void restoreEdit()
+        {
+            buttonEdit_Suppliers.Text = "تعديل";
         }
 
         private void dataGridView1_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -292,6 +301,7 @@ namespace Tohfa
                 textBoxName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
                 textBoxAddress.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
                 textBoxPhone.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                textBoxSuppliersKind.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
             }
             else 
             {
@@ -302,12 +312,21 @@ namespace Tohfa
                 textBoxName.Text = dataGridView1.Rows[i].Cells[2].Value.ToString();
                 textBoxAddress.Text = dataGridView1.Rows[i].Cells[4].Value.ToString();
                 textBoxPhone.Text = dataGridView1.Rows[i].Cells[3].Value.ToString();
+                textBoxSuppliersKind.Text = dataGridView1.Rows[i].Cells[5].Value.ToString();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
             groupBox2.Visible = false;
+        }
+
+        private void textBoxPhone_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }//end class Suppliers
 }//edn namespace 
